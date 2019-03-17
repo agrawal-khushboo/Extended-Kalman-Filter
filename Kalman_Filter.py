@@ -1,17 +1,17 @@
 import numpy as np
 from utils import *
 
-class robo(object):
+class robo():
 	def __init__(self):
 		self.mean = np.identity(4) 
 		self.cov = 0.005*np.identity(6)
 
-class Landmarks(object):
+class Landmarks():
 	def __init__(self,M):
 		self.mean = np.zeros((M,4))
 		self.cov = np.zeros((M,3,3))
 		for i in range(M):
-			self.cov[i,:,:] = np.identity(3)*0.005
+			self.cov[i,:,:] = np.identity(3)*0.05
 
 
 if __name__ == '__main__':

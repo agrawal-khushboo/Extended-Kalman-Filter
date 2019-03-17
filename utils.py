@@ -84,12 +84,12 @@ def DF(q):
 
 def world_T_robo(X):
     R = X[0:3,0:3]
-    T_inv = np.vstack((np.hstack((np.transpose(R), -np.dot(np.transpose(R),X[0:3,3].reshape(3,1)))),np.array([0,0,0,1])))
-    return T_inv
+    T = np.vstack((np.hstack((np.transpose(R), -np.dot(np.transpose(R),X[0:3,3].reshape(3,1)))),np.array([0,0,0,1])))
+    return T
 
 
-def skew(x):
-    return np.array([[0,-x[2],x[1]],[x[2],0,-x[0]],[-x[1],x[0],0]])
+# def skew(x):
+#     return np.array([[0,-x[2],x[1]],[x[2],0,-x[0]],[-x[1],x[0],0]])
 
 def predict(robo,timestamp,lv,av):
     W = 500*np.identity(6)
@@ -101,9 +101,10 @@ def predict(robo,timestamp,lv,av):
 
 def update(robo,Landmarks,timestamp,prefeature,features,K,b,cam_T_imu):
     n = features.shape[1]
-    M = np.hstack((np.vstack((K[0:2,0:3],K[0:2,0:3])),np.array([0,0,-K[0,0]*b,0]).reshape(4,-1)))
+    M = np.hstack((np.vstack((K[0:2,0:3],K[0:2,0:3])),np.array([0,0,-K[0,0]*b,0]).reshape(4,-1))
+    M=M..reshape(4,-1)
     D = np.array([[1,0,0],[0,1,0],[0,0,1],[0,0,0]])
-    V = 5000
+    V = 3000
     for i in range(n):
         if features[:,i][0] == -1:
             continue

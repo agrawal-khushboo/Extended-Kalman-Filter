@@ -102,7 +102,7 @@ def predict(robo,timestamp,lv,av):
 def update(robo,Landmarks,timestamp,prefeature,features,K,b,cam_T_imu):
     n = features.shape[1]
     M = np.hstack((np.vstack((K[0:2,0:3],K[0:2,0:3])),np.array([0,0,-K[0,0]*b,0]).reshape(4,-1))
-    M=M..reshape(4,-1)
+    M=M.reshape(4,-1)
     D = np.array([[1,0,0],[0,1,0],[0,0,1],[0,0,0]])
     V = 3000
     for i in range(n):

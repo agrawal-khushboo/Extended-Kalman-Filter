@@ -78,8 +78,8 @@ def visualize_trajectory_2d(pose,landmark,path_name="Unknown",show_ori=False):
 
 
 
-def DF(q):
-    return (1/q[2])*np.array([[1,0,-q[0]/q[2],0],[0,1,-q[1]/q[2],0],[0,0,0,0],[0,0,-q[3]/q[2],1]])
+# def DF(q):
+#     return (1/q[2])*np.array([[1,0,-q[0]/q[2],0],[0,1,-q[1]/q[2],0],[0,0,0,0],[0,0,-q[3]/q[2],1]])
 
 
 def world_T_robo(X):
